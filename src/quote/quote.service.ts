@@ -1,26 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateQuoteDto } from './dto/create-quote.dto';
-import { UpdateQuoteDto } from './dto/update-quote.dto';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Quote } from './entities/quote.entity';
 
 @Injectable()
-export class QuoteService {
-  create(createQuoteDto: CreateQuoteDto) {
-    return 'This action adds a new quote';
-  }
-
-  findAll() {
-    return `This action returns all quote`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} quote`;
-  }
-
-  update(id: number, updateQuoteDto: UpdateQuoteDto) {
-    return `This action updates a #${id} quote`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} quote`;
+export class QuoteService extends TypeOrmCrudService<Quote> {
+  constructor(@InjectRepository(Quote) QuoteRepository) {
+    super(QuoteRepository);
   }
 }
