@@ -4,7 +4,6 @@ import { QuoteService } from './quote.service';
 import { QuoteController } from './quote.controller';
 import { Quote } from './entities/quote.entity';
 
-
 @Module({
   imports: [TypeOrmModule.forFeature([Quote])],
   providers: [QuoteService],
