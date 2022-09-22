@@ -4,7 +4,11 @@ import { QuoteService } from './quote.service';
 import { Quote } from './entities/quote.entity';
 
 @Crud({
-  model: { type: Quote }, routes: {
+  model: { type: Quote },
+  query: {
+    allow: ['message', 'author'],
+  },
+  routes: {
     only: ['getOneBase', 'getManyBase', 'createOneBase', 'createManyBase', 'replaceOneBase'],
   },
 })
