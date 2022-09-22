@@ -5,7 +5,7 @@ import { Quote } from './entities/quote.entity';
 
 @Crud({
   model: { type: Quote }, routes: {
-    only: ['getOneBase', 'getManyBase', 'createOneBase', 'replaceOneBase'],
+    only: ['getOneBase', 'getManyBase', 'createOneBase', 'createManyBase', 'replaceOneBase'],
   },
 })
 
