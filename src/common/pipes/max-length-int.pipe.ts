@@ -7,18 +7,18 @@ import {
 } from '@nestjs/common';
 
 @Injectable()
-export class PositiveIntPipe implements PipeTransform<string> {
-  transform(value: string, metadata: ArgumentMetadata): number {
-    if (Number(value) <= 0) {
+export class MaxLengthIntPipe implements PipeTransform<number> {
+  transform(value: number, metadata: ArgumentMetadata): number {
+    if (value > 2147483647) {
       throw new HttpException(
         {
           status: HttpStatus.NOT_ACCEPTABLE,
-          message: 'Validation failed (Value must be number grater then 0)',
+          message: `Validation failed (Value ${value} is out of range for type integer)`,
           error: 'Not Acceptable',
         },
         HttpStatus.NOT_ACCEPTABLE,
       );
     }
-    return Number(value);
+    return value;
   }
 }
