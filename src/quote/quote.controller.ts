@@ -18,6 +18,11 @@ import { MaxLengthIntPipe } from '../common/pipes/max-length-int.pipe';
 export class QuoteController {
   constructor(public quoteService: QuoteService) {}
 
+  @Get()
+  getAllQuotes() {
+    return this.quoteService.getAllQuotes();
+  }
+
   @Get('/:quoteId')
   @UsePipes(
     new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
@@ -32,7 +37,7 @@ export class QuoteController {
   }
 
   @Post()
-  createOneQuote(@Body() newQuote: CreateQuoteDto) {
-    return this.quoteService.createOneQuote(newQuote);
+  createOneQuote(@Body() quoteDto: CreateQuoteDto) {
+    return this.quoteService.createOneQuote(quoteDto);
   }
 }

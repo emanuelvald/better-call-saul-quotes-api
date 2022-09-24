@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Quote } from './entities/quote.entity';
@@ -10,11 +10,42 @@ export class QuoteRepository {
     @InjectRepository(Quote) private quoteRepository: Repository<Quote>,
   ) {}
 
-  async getOneQuoteById(quoteId: number): Promise<Quote> {
-    return await this.quoteRepository.findOneBy({ id: quoteId });
+  async getAllQuotes(): Promise<Quote[]> {
+    return await this.quoteRepository
+      .find({
+        select: ['message', 'author'],
+        order: { id: 'ASC' },
+      })
+      .catch((error) => {
+        throw new BadRequestException({
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: `${error.code} ${error.detail}`,
+          error: 'Internal Server Error',
+        });
+      });
   }
 
-  async createOneQuote(newQuote: CreateQuoteDto) {
-    return await this.quoteRepository.insert(newQuote);
+  async getOneQuoteById(quoteId: number): Promise<Quote> {
+    return await this.quoteRepository
+      .findOneBy({ id: quoteId })
+      .catch((error) => {
+        throw new BadRequestException({
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: `${error.code} ${error.detail}`,
+          error: 'Internal Server Error',
+        });
+      });
+  }
+
+  async createOneQuote(quoteDto: CreateQuoteDto) {
+    return await this.quoteRepository
+      .save(quoteDto /*, { reload: true }*/)
+      .catch((error) => {
+        throw new BadRequestException({
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: `${error.code} ${error.detail}`,
+          error: 'Internal Server Error',
+        });
+      });
   }
 }

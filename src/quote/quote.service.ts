@@ -7,11 +7,15 @@ import { CreateQuoteDto } from './dto/create-quote.dto';
 export class QuoteService {
   constructor(private quoteRepository: QuoteRepository) {}
 
+  async getAllQuotes(): Promise<Quote[]> {
+    return await this.quoteRepository.getAllQuotes();
+  }
+
   async getOneQuoteById(quoteId: number): Promise<Quote> {
     return await this.quoteRepository.getOneQuoteById(quoteId);
   }
 
-  async createOneQuote(newQuote: CreateQuoteDto) {
-    return await this.quoteRepository.createOneQuote(newQuote);
+  async createOneQuote(quoteDto: CreateQuoteDto) {
+    return await this.quoteRepository.createOneQuote(quoteDto);
   }
 }
