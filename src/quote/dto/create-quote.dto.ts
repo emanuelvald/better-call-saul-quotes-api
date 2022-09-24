@@ -1,7 +1,6 @@
-import { Column, Unique } from 'typeorm';
+import { Column } from 'typeorm';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-@Unique('quote_unique', ['message', 'author'])
 export class CreateQuoteDto {
   @Column()
   @IsString()
