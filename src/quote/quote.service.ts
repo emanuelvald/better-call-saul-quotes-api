@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
+import { QuoteRepository } from "./quote.repository";
 import { Quote } from './entities/quote.entity';
 
+
 @Injectable()
-export class QuoteService extends TypeOrmCrudService<Quote> {
-  constructor(@InjectRepository(Quote) QuoteRepository) {
-    super(QuoteRepository);
+export class QuoteService {
+  constructor(private quoteRepository: QuoteRepository) {
+  }
+
+  async getOneQuoteById(quoteId: number): Promise<Quote> {
+    return await this.quoteRepository.getOneQuoteById(quoteId)
   }
 }

@@ -1,25 +1,16 @@
-import { Controller, UsePipes, ValidationPipe } from '@nestjs/common';
-import { Crud, CrudController } from '@nestjsx/crud';
+import { Controller, Get, HttpStatus, Param, ParseIntPipe, UsePipes } from '@nestjs/common';
 import { QuoteService } from './quote.service';
 import { Quote } from './entities/quote.entity';
-import { CreateQuoteDto } from './dto/create-quote.dto';
-
-@Crud({
-  model: { type: Quote },
-  dto: { create: CreateQuoteDto },
-  query: {
-    allow: ['message', 'author'],
-  },
-  routes: {
-    only: ['getOneBase', 'getManyBase', 'createOneBase', 'createManyBase'],
-    createOneBase: {
-      decorators: [UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))],
-    },
-  },
-})
+import { PositiveIntPipe } from "../common/pipes/positive-int.pipe";
 
 @Controller('quote')
-export class QuoteController implements CrudController<Quote> {
-  constructor(public service: QuoteService) {
+export class QuoteController {
+  constructor(public quoteService: QuoteService) {
+  }
+
+  @Get('/:quoteId')
+  @UsePipes(new PositiveIntPipe())
+  getOneQuote(@Param('quoteId', new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE}), PositiveIntPipe) quoteId: number): Promise<Quote> {
+    return this.quoteService.getOneQuoteById(quoteId)
   }
 }
