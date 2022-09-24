@@ -37,6 +37,23 @@ export class QuoteRepository {
       });
   }
 
+  async getRandomQuote() {
+    return await this.quoteRepository
+      .createQueryBuilder()
+      .select(['quotes.message', 'quotes.author'])
+      .from(Quote, 'quotes')
+      .orderBy('RANDOM()')
+      .limit(1)
+      .execute()
+      .catch((error) => {
+        throw new BadRequestException({
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: `${error.code} ${error.detail}`,
+          error: 'Internal Server Error',
+        });
+      });
+  }
+
   async createOneQuote(quoteDto: CreateQuoteDto) {
     return await this.quoteRepository
       .save(quoteDto /*, { reload: true }*/)

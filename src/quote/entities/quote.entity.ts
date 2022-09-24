@@ -1,26 +1,41 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  Unique,
+  UpdateDateColumn,
+} from 'typeorm';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-@Entity()
-@Unique('quote_unique', ['message', 'author'])
+@Entity('quotes')
+@Unique('quo_unique', ['message', 'author'])
 export class Quote {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'quo_id' })
   @IsNumber()
   id: number;
 
-  @Column({ type: 'text' })
+  @Column({ name: 'quo_message', type: 'text' })
   @IsString()
   @IsNotEmpty()
   message: string;
 
-  @Column({ type: 'text' })
+  @Column({ name: 'quo_author', type: 'text' })
   @IsString()
   @IsNotEmpty()
   author: string;
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({
+    name: 'quo_created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({
+    name: 'quo_updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }

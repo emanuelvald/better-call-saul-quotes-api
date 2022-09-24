@@ -15,6 +15,10 @@ export class QuoteService {
     return await this.quoteRepository.getOneQuoteById(quoteId);
   }
 
+  async getRandomQuote() {
+    return await this.quoteRepository.getRandomQuote();
+  }
+
   async createOneQuote(quoteDto: CreateQuoteDto) {
     return await this.quoteRepository.createOneQuote(quoteDto);
   }

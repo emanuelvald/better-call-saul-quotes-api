@@ -14,7 +14,7 @@ import { PositiveIntPipe } from '../common/pipes/positive-int.pipe';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { MaxLengthIntPipe } from '../common/pipes/max-length-int.pipe';
 
-@Controller('quote')
+@Controller('quotes')
 export class QuoteController {
   constructor(public quoteService: QuoteService) {}
 
@@ -23,17 +23,22 @@ export class QuoteController {
     return this.quoteService.getAllQuotes();
   }
 
-  @Get('/:quoteId')
+  @Get('/id/:quoteId')
   @UsePipes(
     new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
     new PositiveIntPipe(),
     new MaxLengthIntPipe(),
   )
-  getOneQuote(
+  getOneQuoteById(
     @Param('quoteId')
     quoteId: number,
   ): Promise<Quote> {
     return this.quoteService.getOneQuoteById(quoteId);
+  }
+
+  @Get('/random')
+  getRandomQuote() {
+    return this.quoteService.getRandomQuote();
   }
 
   @Post()
