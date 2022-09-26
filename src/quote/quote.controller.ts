@@ -9,7 +9,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { QuoteService } from './quote.service';
-import { Quote } from './entities/quote.entity';
+import { Quote } from './quote.entity';
 import { PositiveIntPipe } from '../common/pipes/positive-int.pipe';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { MaxLengthIntPipe } from '../common/pipes/max-length-int.pipe';

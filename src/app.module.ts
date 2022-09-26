@@ -1,22 +1,19 @@
 import { Module } from '@nestjs/common';
 import { QuoteModule } from './quote/quote.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Quote } from './quote/entities/quote.entity';
+import { ConfigModule } from '@nestjs/config';
+import { DatabaseConfig } from './config/database/database.config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'jelani.db.elephantsql.com',
-    port: 5432,
-    username: 'hdcwpppu',
-    password: 'wTwtckC0hEdJMs1pPCCzzCRnWW-hkKRz',
-    database: 'hdcwpppu',
-    entities: [Quote],
-    synchronize: true,
-  }),
-    QuoteModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      useClass: DatabaseConfig,
+      inject: [DatabaseConfig],
+    }),
+    QuoteModule,
+  ],
   controllers: [],
-  providers: [],
+  providers: [DatabaseConfig],
 })
-export class AppModule {
-}
+export class AppModule {}

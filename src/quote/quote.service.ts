@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { QuoteRepository } from './quote.repository';
-import { Quote } from './entities/quote.entity';
+import { Quote } from './quote.entity';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 
 @Injectable()
