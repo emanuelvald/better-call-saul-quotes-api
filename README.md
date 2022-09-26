@@ -65,6 +65,22 @@ A simple API to retrieve some quotes of Better Call Saul!
 
 You can integrate the API into Postman thanks to the Postman collection available on the repository.
 
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`TYPEORM_TYPE`
+
+`TYPEORM_HOST`
+
+`TYPEORM_PORT`
+
+`TYPEORM_USERNAME`
+
+`TYPEORM_PASSWORD`
+
+`TYPEORM_DATABASE`
+
 ## Installation
 
 ```bash
