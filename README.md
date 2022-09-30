@@ -81,21 +81,34 @@ To run this project, you will need to add the following environment variables to
 
 `TYPEORM_DATABASE`
 
-## Installation
+## Run Locally
+
+Clone the project
 
 ```bash
-$ npm install
+  git clone https://github.com/emanuelvald/better-call-saul-quotes-api.git
 ```
 
-## Running the app
+Go to the project directory
 
 ```bash
-# development
-$ npm run start
+  cd my-project
+```
 
-# watch mode
-$ npm run start:dev
+Install dependencies
 
-# production mode
-$ npm run start:prod
+```bash
+  npm install
+```
+
+Run Migrations
+
+```bash
+  npm run typeorm:run-migrations
+```
+
+Start the server
+
+```bash
+  npm run start
 ```
