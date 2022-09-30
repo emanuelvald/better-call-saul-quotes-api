@@ -112,3 +112,9 @@ Start the server
 ```bash
   npm run start
 ```
+
+## Contributing
+
+Contributions are always welcome!
+
+Feel free to suggest any changes or add new quotes, just do a pull request!
