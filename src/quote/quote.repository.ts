@@ -40,7 +40,7 @@ export class QuoteRepository {
   async getRandomQuote() {
     return await this.quoteRepository
       .createQueryBuilder()
-      .select(['quotes.message', 'quotes.author'])
+      .select(['quotes.quo_message as message', 'quotes.quo_author as author'])
       .from(Quote, 'quotes')
       .orderBy('RANDOM()')
       .limit(1)
