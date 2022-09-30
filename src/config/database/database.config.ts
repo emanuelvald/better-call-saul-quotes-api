@@ -12,6 +12,7 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
   private TYPEORM_USERNAME = this.configService.get('TYPEORM_USERNAME');
   private TYPEORM_PASSWORD = this.configService.get('TYPEORM_PASSWORD');
   private TYPEORM_DATABASE = this.configService.get('TYPEORM_DATABASE');
+  private TYPEORM_ENTITIES = this.configService.get('TYPEORM_ENTITIES');
   private TYPEORM_SYNCHRONIZE = this.configService.get('TYPEORM_SYNCHRONIZE');
 
   constructor(private configService: ConfigService) {}

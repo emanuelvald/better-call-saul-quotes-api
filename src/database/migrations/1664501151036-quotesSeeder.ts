@@ -1,0 +1,60 @@
+import { MigrationInterface, QueryRunner } from 'typeorm';
+
+export class quotesSeeder1664501151036 implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(`INSERT INTO quotes (quo_id, quo_message, quo_author)
+        VALUES (1, 'You don’t have to make up with me. We don’t have to understand each other. Things are fine the way they are.', 'Chuck McGill'),
+            (2, 'My brother is not a bad person. He has a good heart. It’s just he can’t help himself. And everyone’s left picking up the pieces.', 'Chuck McGill'),
+            (3, 'Hey, you and Mozart, huh? You both started young.', 'Chuck McGill'),
+            (4, 'Here’s what’s gonna happen. One day you’re gonna get sick – again. One of your employees is gonna find you curled up in that space blanket, take you to the hospital, hook you up to those machines that beep and whir, and hurt. And this time, it will be too much. And you will die there. Alone.', 'Jimmy McGill'),
+            (5, 'You pulled that heartstrings con job on me?! You piece of shit! ‘Oh, my brain used to work, I’m sick, I don’t know what to do!’ Asshole! No wonder Rebecca left you! What took her so long?!', ' Jimmy McGill'),
+            (6, 'For ten minutes today, Chuck didn’t hate me. I forgot what that felt like.', 'Jimmy McGill'),
+            (7, 'My friends, I promise you that together, we will prosper.', 'Gus Fring'),
+            (8, 'Getting arrested that makes people look guilty, even the innocent ones and innocent people get arrested every day.', 'Jimmy McGill'),
+            (9, 'I guess I shouldn’t be surprised I have to tell you this. But it’s probably a bad idea that you willingly talk to the police, being a criminal and all.', 'Mike Erhmantraut'),
+            (10, 'I know he’s not perfect. And I know he cuts corners. But you’re the one who made him this way. He idolizes you, he accepts you, he takes care of you. And all he ever wanted was your love and support. But all you’ve ever done is judge him. You never believed in him, you never wanted him to succeed. And you know what? I feel sorry for him. And I feel sorry for you.', 'Kim Wexler'),
+            (11, 'What’s the difference between a tick and a lawyer? The tick falls off when you’re dead!', 'Jimmy McGill'),
+            (12, 'I don’t know what image you have of him, past or present, or whatever he did or said, but Jimmy is a good lawyer. And he works very hard.', 'Kim Wexler'),
+            (13, 'Confidence is good. Facts on your side, better.', 'Chuck McGill'),
+            (14, 'We can we all three just parachute down from cloud cuckoo land?', 'Jimmy McGill'),
+            (15, 'The bar exam’s a mother. I mean, for me it was. I failed it the first two times, but I guess it’s like losing your virginity, third time’s the charm.', 'Jimmy McGill'),
+            (16, 'No crime is complete without the cover-up.', 'Chuck McGill'),
+            (17, 'A good magician never reveals his secrets.', 'Jimmy McGill'),
+            (18, 'I know we’re never supposed to say our clients are guilty, but, hey, not my client anymore. He’s guilty as sin.', 'Kim Wexler'),
+            (19, 'Either you fit the jacket, or the jacket fits you.', 'Kim Wexler'),
+            (20, 'It’s tough, I know. But you’re tough people. And your family is worth it.', 'Kim Wexler'),
+            (21, 'You think I’m trouble now, as your partner? Imagine me as your enemy.', 'Chuck McGill'),
+            (22, 'This is an opportunity. That’s why I’m doing this, not to punish you. To show you – truly show you – that you have to make a change before it’s too late. Before you destroy yourself, or someone else. And I believe you can change. You’ll find your path. And when you’re ready, I will be there to help you walk that path.', 'Chuck McGill'),
+            (23, 'I don’t doubt that your emotions are real. But what’s the point of all the sad faces and the gnashing of teeth? If you’re not going to change your behavior…', 'Chuck McGill'),
+            (24, 'I know what stopped me. And you know what? It’s never stopping me again.', 'Jimmy McGill'),
+            (25, 'Facts are facts.', 'Chuck McGill'),
+            (26, 'What do you call a lawyer with an IQ of 60? Your Honor.', 'Jimmy McGill'),
+            (27, 'Perfection is the enemy of perfectly adequate.', 'Jimmy McGill'),
+            (28, 'Winning doesn’t always mean ‘getting a favorable verdict at trial.', 'Kim Wexler'),
+            (29, 'It’s never too late for congratulations.', 'Jimmy McGill'),
+            (30, 'Sometimes you have to say something out loud to hear how crazy it sounds.', 'Jimmy McGill'),
+            (31, 'Look at you. You’re in so much pain. Why are you putting yourself through all this?', 'Chuck McGill'),
+            (32, 'Sometimes the good guys win.', 'Jimmy McGill'),
+            (33, 'I’m not good at building shit, you know? I’m excellent at tearing it down.', 'Jimmy McGill'),
+            (34, 'The fallacy of sunk cost… It’s what gamblers do. They throw good money after bad thinking they can turn their luck around. It’s like, ‘I’ve already spent this much money or time… whatever. I got to keep going!’ No, there’s no reward at the end of this game.', 'Jimmy McGill'),
+            (35, 'This is what you do. You hurt people over and over and over, and then there’s this show of remorse.', 'Chuck McGill'),
+            (36, 'Whoa, whoa. Hold up. What the hell happened to you? I get it, the first rule of Fight Club, right?', 'Jimmy McGill'),
+            (37, 'What do you get when you cross the Godfather with a lawyer? An offer you can’t understand.', 'Jimmy McGill'),
+            (38, 'Got to look successful to be successful.', ' Jimmy McGill'),
+            (39, 'Promise me you won’t do anything stupid. Promise me.', 'Nacho Varga'),
+            (40, 'What’s the difference between a vacuum cleaner and a lawyer on a motorcycle? The vacuum cleaner has the dirtbag on the inside.', 'Jimmy McGill'),
+            (41, 'Are you telling the truth? Or are you just trying to make me feel better?', 'Chuck McGill'),
+            (42, 'Money is not beside the point… Money is the point.', 'Jimmy McGill'),
+            (43, 'The price of excellence is eternal vigilance.', 'Chuck McGill'),
+            (44, 'Wow, my knight in shining armor. That is some sacrifice, quitting a job that you’ve been trying to tank since day one.', 'Kim Wexler'),
+            (45, 'The lesson is, if you’re gonna be a criminal, do your homework.', 'Mike Erhmantraut'),
+            (46, 'I pretend not to care, but he’s my brother. How can I not?', 'Jimmy McGill'),
+            (47, 'Why do they bury lawyers under 20 feet of dirt? Because deep down, they’re really good people.', 'Jimmy McGill'),
+            (48, 'If I had to do it all over again, I would maybe do some things differently. I just thought you should know that.', 'Jimmy McGill'),
+            (49, 'I don’t want to hurt your feelings. But the truth is, you’ve never mattered all that much to me.', 'Chuck McGill'),
+            (50, 'I love what you’ve done with the place. Last time I was here, it was, uh… Well, not a contender for the cover of Good Housekeeping, that’s for sure.', 'Jimmy McGill')
+        `);
+  }
+
+  public async down(queryRunner: QueryRunner): Promise<void> {}
+}

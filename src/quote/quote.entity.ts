@@ -9,9 +9,13 @@ import {
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity('quotes')
-@Unique('quo_unique', ['message', 'author'])
+@Unique('uq_quo', ['message', 'author'])
 export class Quote {
-  @PrimaryGeneratedColumn({ name: 'quo_id' })
+  @PrimaryGeneratedColumn({
+    name: 'quo_id',
+    primaryKeyConstraintName: 'pk_quo',
+    comment: 'Quotes Primary Key',
+  })
   @IsNumber()
   id: number;
 
