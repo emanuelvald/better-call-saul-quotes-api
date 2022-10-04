@@ -104,7 +104,7 @@ Install dependencies
 Run Migrations
 
 ```bash
-  npm run typeorm:run-migrations
+  npm run typeorm:run
 ```
 
 Start the server
