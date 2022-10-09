@@ -19,7 +19,7 @@ export class QuoteService {
     return await this.quoteRepository.getRandomQuote();
   }
 
-  async createOneQuote(quoteDto: CreateQuoteDto) {
-    return await this.quoteRepository.createOneQuote(quoteDto);
+  async createOneQuote(createQuoteDto: CreateQuoteDto) {
+    return await this.quoteRepository.createOneQuote(createQuoteDto);
   }
 }

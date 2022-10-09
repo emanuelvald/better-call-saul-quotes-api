@@ -42,7 +42,7 @@ export class QuoteController {
   }
 
   @Post()
-  createOneQuote(@Body() quoteDto: CreateQuoteDto) {
-    return this.quoteService.createOneQuote(quoteDto);
+  createOneQuote(@Body() createQuoteDto: CreateQuoteDto) {
+    return this.quoteService.createOneQuote(createQuoteDto);
   }
 }

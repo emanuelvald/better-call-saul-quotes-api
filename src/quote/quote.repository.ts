@@ -54,9 +54,9 @@ export class QuoteRepository {
       });
   }
 
-  async createOneQuote(quoteDto: CreateQuoteDto) {
+  async createOneQuote(createQuoteDto: CreateQuoteDto) {
     return await this.quoteRepository
-      .save(quoteDto /*, { reload: true }*/)
+      .save(createQuoteDto, { reload: true })
       .catch((error) => {
         throw new BadRequestException({
           status: HttpStatus.INTERNAL_SERVER_ERROR,
