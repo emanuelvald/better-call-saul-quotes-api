@@ -65,4 +65,16 @@ export class QuoteRepository {
         });
       });
   }
+
+  async createQuotes(createQuotesDto: CreateQuoteDto[]) {
+    return await this.quoteRepository
+      .upsert(createQuotesDto, ['author', 'message'])
+      .catch((error) => {
+        throw new BadRequestException({
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: `${error.code} ${error.detail}`,
+          error: 'Internal Server Error',
+        });
+      });
+  }
 }

@@ -22,4 +22,8 @@ export class QuoteService {
   async createOneQuote(createQuoteDto: CreateQuoteDto) {
     return await this.quoteRepository.createOneQuote(createQuoteDto);
   }
+
+  async createQuotes(createQuotesDto: CreateQuoteDto[]) {
+    return await this.quoteRepository.createQuotes(createQuotesDto);
+  }
 }

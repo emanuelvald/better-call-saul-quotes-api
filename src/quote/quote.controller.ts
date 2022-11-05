@@ -45,4 +45,9 @@ export class QuoteController {
   createOneQuote(@Body() createQuoteDto: CreateQuoteDto) {
     return this.quoteService.createOneQuote(createQuoteDto);
   }
+
+  @Post('/bulk')
+  createQuotes(@Body() createQuotesDto: CreateQuoteDto[]) {
+    return this.quoteService.createQuotes(createQuotesDto);
+  }
 }
